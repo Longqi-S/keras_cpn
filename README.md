@@ -10,6 +10,8 @@ Note that our testing code is based on detection results from original tf-cpn (I
 </center>
 We trained CPN model based on 4 GTX1080ti (11G) using 2days.
 
+You can download our model here: https://github.com/Longqi-S/keras_cpn/releases/download/v0.1/cpn_resnet50_cpn_0065.h5
+
 ## Prepare
 
 1. Download MSCOCO images from [http://cocodataset.org/#download](http://cocodataset.org/#download). We train in COCO [trainvalminusminival](https://drive.google.com/drive/folders/15loPFQCMQnJqLK1viSMeIwTFT-KbNzdG?usp=sharing) dataset and validate in [minival](https://drive.google.com/drive/folders/15loPFQCMQnJqLK1viSMeIwTFT-KbNzdG?usp=sharing) dataset. Then put the data and evaluation [PythonAPI](https://github.com/cocodataset/cocoapi/tree/master/PythonAPI) in $CPN_ROOT/data/COCO/MSCOCO.
