@@ -16,6 +16,22 @@ You can download our model here: https://github.com/Longqi-S/keras_cpn/releases/
 
 1. Download MSCOCO images from [http://cocodataset.org/#download](http://cocodataset.org/#download). We train in COCO [trainvalminusminival](https://drive.google.com/drive/folders/15loPFQCMQnJqLK1viSMeIwTFT-KbNzdG?usp=sharing) dataset and validate in [minival](https://drive.google.com/drive/folders/15loPFQCMQnJqLK1viSMeIwTFT-KbNzdG?usp=sharing) dataset. Then put the data and evaluation [PythonAPI](https://github.com/cocodataset/cocoapi/tree/master/PythonAPI) in $CPN_ROOT/data/COCO/MSCOCO.
 
+We use the human detection results same with tf-cpn, you can download it here: https://github.com/Longqi-S/keras_cpn/releases/download/v0.1/person_detection_minival411_human553.json.coco
+
+After preparation, file stucture should be like below:
+```
+data/
+       |->COCO/
+       |    |->dets/
+       |    |    |->person_detection_minival411_human553.json.coco
+       |    |->MSCOCO/
+       |    |    |->PythonAPI/
+       |    |    |->train2014/
+       |    |    |->val2014/
+       |    |    |->person_keypoints_minival2014.json
+       |    |    |->person_keypoints_trainvalminusminival2014.json
+```
+
 2. Download the base model (ResNet) weights from [keras model_zoo]
 ```
 cd $CPN_ROOT/data
