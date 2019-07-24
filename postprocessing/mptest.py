@@ -70,7 +70,7 @@ def test_net(model, dets, ranges, config):
                     flip_img = cv2.flip(ori_img, 1)
                     feed.append(flip_img[np.newaxis, ...])
                 feed = np.vstack(feed)
-                
+
                 ## model predict
                 res = model.keras_model.predict([feed], verbose=0)
                 res = res.transpose(0, 3, 1, 2) # [batch, kps, h, w]
@@ -185,10 +185,10 @@ def test(test_model, dets_path, gt_path):
     cocoEval.evaluate()
     cocoEval.accumulate()
     cocoEval.summarize()
-    
+
     K.clear_session()
-        
-    
+
+
 if __name__ == '__main__':
     def parse_args():
         parser = argparse.ArgumentParser()

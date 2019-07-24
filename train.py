@@ -42,7 +42,7 @@ if __name__ == '__main__':
     print("Logs: ", args.logs)
     config.display()
     # Create model
-    model = cpn.CPN(mode="training", config=config, model_dir=args.logs)  
+    model = cpn.CPN(mode="training", config=config, model_dir=args.logs)
     # Select weights file to load
     if args.model.lower() == "last":
         # Find last trained weights

@@ -9,7 +9,7 @@ import logging
 used for training and validation
 """
 def data_generator(dataset, config, mode='train', shuffle=True, batch_size=1):
-    
+
     b = 0  # batch item index
     image_index = -1
     total_size = len(dataset)
@@ -45,7 +45,7 @@ def data_generator(dataset, config, mode='train', shuffle=True, batch_size=1):
                     (batch_size,) + heatmaps7.shape[1:], dtype=heatmaps7.dtype)
                 batch_valids = np.zeros(
                     [batch_size, config.KEYPOINTS_NUM], dtype=valids.dtype)
-            
+
 
             # Add to batch
             augment_num = config.NR_AUG
