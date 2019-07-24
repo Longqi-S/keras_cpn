@@ -97,7 +97,7 @@ def data_augmentation(trainData, trainLabel, trainValids, cfg):
             counter += 1
         return trainData, trainLabel, trainValids
 
-""" generate corresponding heatmaps 
+""" generate corresponding heatmaps
 """
 def joints_heatmap_gen(data, label, cfg, return_valid=False, gaussian_kernel=(13, 13)):
     num_keypoints = cfg.KEYPOINTS_NUM
@@ -237,14 +237,14 @@ def preprocessing(d, config, stage='train', debug=False):
         imgs = imgs.astype(np.float32)
         for index_ in range(len(imgs)):
             imgs[index_] = image_preprocessing(imgs[index_], config)
-        
+
         return_args = [imgs.astype(np.float32),
             heatmaps15.astype(np.float32).transpose(0, 2, 3, 1),
             heatmaps11.astype(np.float32).transpose(0, 2, 3, 1),
             heatmaps9.astype(np.float32).transpose(0, 2, 3, 1),
             heatmaps7.astype(np.float32).transpose(0, 2, 3, 1),
             valids.astype(np.float32)]
-        
+
         return return_args
     else:
         for index_ in range(len(imgs)):
@@ -262,4 +262,4 @@ if __name__ == '__main__':
     from models.config import DefaultConfig
     config = DefaultConfig()
     data = preprocessing(train[0], config, stage='train', debug=False)
-    from IPython import embed; embed() 
+    from IPython import embed; embed()

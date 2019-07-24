@@ -5,7 +5,7 @@ The main CPN model implemenetation.
 Modified By Longqi-S
 """
 
-import os 
+import os
 import glob
 import datetime
 import json
@@ -84,19 +84,19 @@ class CPN():
         if mode == "training":
             # subnet GT
             input_heatmaps15 = KL.Input(
-                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM], 
+                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM],
                 name="input_heatmaps15", dtype=tf.float32)
             input_heatmaps11 = KL.Input(
-                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM], 
+                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM],
                 name="input_heatmaps11", dtype=tf.float32)
             input_heatmaps9 = KL.Input(
-                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM], 
+                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM],
                 name="input_heatmaps9", dtype=tf.float32)
             input_heatmaps7 = KL.Input(
-                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM], 
+                shape=[config.OUTPUT_SHAPE[0], config.OUTPUT_SHAPE[1], config.KEYPOINTS_NUM],
                 name="input_heatmaps7", dtype=tf.float32)
             input_valids = KL.Input(
-                shape=[config.KEYPOINTS_NUM], 
+                shape=[config.KEYPOINTS_NUM],
                 name="input_valids", dtype=tf.float32)
             input_labels = [input_heatmaps15, input_heatmaps11, input_heatmaps9, input_heatmaps7]
         if 'resnet' in config.BACKBONE:
@@ -164,7 +164,7 @@ class CPN():
         exlude: list of layer names to excluce
         """
         import h5py
-        from keras.engine import topology
+        from keras.engine import saving
 
         if exclude:
             by_name = True
@@ -186,7 +186,7 @@ class CPN():
             layers = filter(lambda l: l.name not in exclude, layers)
 
         if by_name:
-            topology.load_weights_from_hdf5_group_by_name(f, layers)
+            saving.load_weights_from_hdf5_group_by_name(f, layers)
         else:
             topology.load_weights_from_hdf5_group(f, layers)
         if hasattr(f, 'close'):
